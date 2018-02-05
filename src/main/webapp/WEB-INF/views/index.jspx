@@ -1,0 +1,89 @@
+<div xmlns:spring="http://www.springframework.org/tags" xmlns:util="urn:jsptagdir:/WEB-INF/tags/util"
+     xmlns:jsp="http://java.sun.com/JSP/Page" version="2.0" xmlns:form="http://www.springframework.org/tags/form">
+  <jsp:directive.page contentType="text/html;charset=UTF-8" />
+  <jsp:output omit-xml-declaration="yes" />
+  <spring:message var="app_name" code="application_name" htmlEscape="false" />
+  <spring:message var="title" code="welcome_titlepane" arguments="${app_name}" htmlEscape="false" />
+  <util:panel id="title" title="${title}">
+    <h3>
+      <spring:message code="welcome_h3" arguments="${app_name}" />
+    </h3>
+    <button onClick="showRegister();">飼料登錄</button>
+    <button style="margin-left: 10px;" onClick="location.href='${pageContext.request.contextPath}/feed/index'">供應商查詢</button>
+
+    <div id="queryPanel">
+      <p>產品名稱：<input type="text" name="prodName" value=""/></p>
+      <p>成分：<input type="text" name="ingredient" value=""/></p>
+      <p>適用魚種：<input type="text" name="availableFish" value=""/></p>
+      <p>供應商：<input type="text" name="supplier" value=""/></p>
+      <p>來源：<input type="text" name="origin" value=""/></p>
+      <p>標章認證：<input type="text" name="certification" value=""/></p>
+      <p><button onClick="showData();">查詢</button></p>
+    </div>
+
+    <table id="feedData" style="display:none">
+      <tr>
+        <td>產品名稱</td>
+        <td>成分</td>
+        <td>適用魚種</td>
+        <td>供應商</td>
+        <td>來源</td>
+        <td>標章認證</td>
+        <td>使用方法</td>
+        <td>價格</td>
+      </tr>
+      <tr>
+        <td>福壽牌尼羅魚浮水系列</td>
+        <td>粗蛋白質23%↑、粗脂肪3%↑、粗灰份12%↓、粗纖維質6.5%↓、水份11%↓、鹽酸不溶物2%↓</td>
+        <td>尼羅魚、台灣鯛、土種吳郭魚、紅尼羅魚等淡水魚類</td>
+        <td>福壽實業</td>
+        <td>台灣 台中</td>
+        <td>ISO9001</td>
+        <td>投餌以多次投餵比較好，每日投餌量一般為2~4次
+          100公克左右魚苗每日投餌量以魚體重的3-5%為佳
+          300公克以上魚體每日投餌量以魚體重的2-3%為佳</td>
+        <td>NTD$500</td>
+      </tr>
+      <tr>
+        <td>固達淡水魚苗開口飼料</td>
+        <td>粗蛋白質58%↑、粗脂肪8.4%↑、粗灰份16%↓、粗纖維質2.9%↓、水份10%↓、鹽酸不溶物2%↓</td>
+        <td>銀鱸、寶石鱸、加州鱸、黃金鱸、墨瑞鱈</td>
+        <td>海育企業股份有限公司</td>
+        <td>台灣 高雄</td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+
+    </table>
+
+    <div id="registerPanel" style="display:none">
+      <p>供應商：<input type="text" name="prodName" value=""/></p>
+      <p>飼料：<input type="text" name="ingredient" value=""/></p>
+      <p>價格：<input type="text" name="availableFish" value=""/></p>
+    </div>
+
+  </util:panel>
+
+
+  <script type="text/javascript">
+
+      function showData(){
+          document.getElementById("feedData").style.display = 'block';
+      }
+
+      function showRegister(){
+          document.getElementById("registerPanel").style.display = 'block';
+          document.getElementById("feedData").style.display = 'none';
+          document.getElementById("queryPanel").style.display = 'none';
+      }
+
+      function showSupplier(){
+          document.getElementById("supplierPanel").style.display = 'block';
+          document.getElementById("feedData").style.display = 'none';
+          document.getElementById("queryPanel").style.display = 'none';
+          document.getElementById("registerPanel").style.display = 'none';
+      }
+
+  </script>
+</div>
